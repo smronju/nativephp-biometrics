@@ -1,0 +1,49 @@
+{
+    "name": "smronju/nativephp-biometrics",
+    "description": "Adds the missing Android implementation for NativePHP Mobile's Biometrics::prompt() — Face ID/Touch ID already work via nativephp/mobile core on iOS; this plugin fills the same gap on Android with BiometricPrompt.",
+    "version": "1.0.0",
+    "type": "nativephp-plugin",
+    "license": "MIT",
+    "homepage": "https://github.com/smronju/nativephp-biometrics",
+    "keywords": ["nativephp", "mobile", "laravel", "biometrics", "fingerprint", "android"],
+    "authors": [
+        {
+            "name": "Mohammad Shoriful Islam Ronju",
+            "email": "smronju@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/smronju/nativephp-biometrics/issues",
+        "source": "https://github.com/smronju/nativephp-biometrics"
+    },
+    "require": {
+        "php": "^8.2",
+        "nativephp/mobile": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Smronju\\NativephpBiometrics\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Smronju\\NativephpBiometrics\\BiometricsServiceProvider"
+            ]
+        },
+        "nativephp": {
+            "manifest": "nativephp.json"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.0"
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

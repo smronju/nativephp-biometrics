@@ -1,0 +1,66 @@
+{
+    "name": "smronju/nativephp-biometrics",
+    "version": "1.0.0",
+    "description": "Android implementation of NativePHP Mobile's Biometrics::prompt() via androidx.biometric.BiometricPrompt — iOS already works out of the box via nativephp/mobile core.",
+    "namespace": "Biometrics",
+    "keywords": ["nativephp", "mobile", "biometrics", "fingerprint", "face-id"],
+    "category": "security",
+    "license": "MIT",
+    "pricing": {
+        "type": "free"
+    },
+    "author": {
+        "name": "Mohammad Shoriful Islam Ronju",
+        "email": "smronju@gmail.com",
+        "url": "https://github.com/smronju"
+    },
+    "homepage": "https://github.com/smronju/nativephp-biometrics",
+    "repository": "https://github.com/smronju/nativephp-biometrics",
+    "funding": [],
+    "platforms": [
+        "android"
+    ],
+    "icon": "resources/icon.png",
+    "screenshots": [],
+    "bridge_functions": [
+        {
+            "name": "Biometric.Prompt",
+            "android": "com.iou.plugins.biometrics.BiometricFunctions.Prompt",
+            "description": "Shows the system fingerprint/face prompt and blocks until it reaches a terminal outcome, returning {\"status\": \"success\"|\"failed\"} — matching Native\\Mobile\\PendingBiometric::prompt()'s synchronous contract. Also dispatches the Biometric\\Completed event for parity with the fluent ->completed() callback."
+        }
+    ],
+    "android": {
+        "min_version": 23,
+        "permissions": [
+            "android.permission.USE_BIOMETRIC"
+        ],
+        "repositories": [],
+        "dependencies": {
+            "implementation": [
+                "androidx.biometric:biometric:1.1.0"
+            ]
+        },
+        "activities": [],
+        "services": [],
+        "receivers": [],
+        "providers": []
+    },
+    "ios": {
+        "min_version": "15.0",
+        "permissions": [],
+        "repositories": [],
+        "dependencies": {
+            "swift_packages": [],
+            "pods": []
+        }
+    },
+    "assets": {
+        "android": [],
+        "ios": []
+    },
+    "secrets": [],
+    "events": [
+        "Native\\Mobile\\Events\\Biometric\\Completed"
+    ],
+    "service_provider": "Smronju\\NativephpBiometrics\\BiometricsServiceProvider"
+}
