@@ -1,7 +1,7 @@
 {
     "name": "smronju/nativephp-biometrics",
-    "version": "1.0.0",
-    "description": "Android implementation of NativePHP Mobile's Biometrics::prompt() via androidx.biometric.BiometricPrompt — iOS already works out of the box via nativephp/mobile core.",
+    "version": "1.1.0",
+    "description": "Implements NativePHP Mobile's Biometrics::prompt() on both platforms — androidx.biometric.BiometricPrompt on Android, LocalAuthentication (Face ID/Touch ID) on iOS. nativephp/mobile core registers Biometric.Prompt on neither platform.",
     "namespace": "Biometrics",
     "keywords": ["nativephp", "mobile", "biometrics", "fingerprint", "face-id"],
     "category": "security",
@@ -18,7 +18,8 @@
     "repository": "https://github.com/smronju/nativephp-biometrics",
     "funding": [],
     "platforms": [
-        "android"
+        "android",
+        "ios"
     ],
     "icon": "resources/icon.png",
     "screenshots": [],
@@ -26,6 +27,7 @@
         {
             "name": "Biometric.Prompt",
             "android": "com.iou.plugins.biometrics.BiometricFunctions.Prompt",
+            "ios": "BiometricFunctions.Prompt",
             "description": "Shows the system fingerprint/face prompt and blocks until it reaches a terminal outcome, returning {\"status\": \"success\"|\"failed\"} — matching Native\\Mobile\\PendingBiometric::prompt()'s synchronous contract. Also dispatches the Biometric\\Completed event for parity with the fluent ->completed() callback."
         }
     ],
@@ -47,7 +49,9 @@
     },
     "ios": {
         "min_version": "15.0",
-        "permissions": [],
+        "info_plist": {
+            "NSFaceIDUsageDescription": "Uses Face ID to verify your identity."
+        },
         "repositories": [],
         "dependencies": {
             "swift_packages": [],
