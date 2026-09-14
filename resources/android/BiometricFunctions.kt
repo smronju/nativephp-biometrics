@@ -18,6 +18,8 @@ object BiometricFunctions {
 
     private const val DEFAULT_EVENT_CLASS = "Native\\Mobile\\Events\\Biometric\\Completed"
     private const val AUTHENTICATE_TIMEOUT_SECONDS = 60L
+    private const val PROMPT_SUBTITLE = "Confirm your identity"
+    private const val PROMPT_DESCRIPTION = "Use your fingerprint or face to continue."
 
     /**
      * Shows the system fingerprint/face prompt and blocks the calling (PHP) thread
@@ -73,6 +75,8 @@ object BiometricFunctions {
 
                 val promptInfo = BiometricPrompt.PromptInfo.Builder()
                     .setTitle(label)
+                    .setSubtitle(PROMPT_SUBTITLE)
+                    .setDescription(PROMPT_DESCRIPTION)
                     .setNegativeButtonText("Cancel")
                     .setAllowedAuthenticators(BIOMETRIC_STRONG)
                     .build()

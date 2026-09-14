@@ -147,6 +147,15 @@ describe('Native Code', function () {
         expect($kotlinContent)->toContain('canAuthenticate')
             ->and($kotlinContent)->toContain('BIOMETRIC_SUCCESS');
     });
+
+    it('shows help text on the prompt, not just a bare title', function () {
+        $kotlinContent = file_get_contents($this->pluginPath.'/resources/android/BiometricFunctions.kt');
+
+        // The title alone is just the host app's name (setTitle(label)) — a
+        // subtitle/description is what actually tells the user what to do.
+        expect($kotlinContent)->toContain('.setSubtitle(')
+            ->and($kotlinContent)->toContain('.setDescription(');
+    });
 });
 
 describe('PHP Classes', function () {
